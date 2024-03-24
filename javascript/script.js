@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const payload = {
         embeds: [{
           title: "Nouvelle visite sur le site",
-          description: `IP: ${ipAddress}`,
+          description: `IP provenant de la page des cracks: ${ipAddress}`,
           fields: [
             { name: "Pays", value: country },
             { name: "Ville", value: city },
