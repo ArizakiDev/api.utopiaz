@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Utopiaz api</title>
+    <meta http-equiv="refresh" content="1; URL=https://www.utopiaz.adkynet.eu/" />
+  </head>
+  <body>
+  </body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  fetch("https://api.ipify.org/?format=json")
+    .then(response => response.json())
+    .then(data => {
+      const ipAddress = data.ip;
+
+      const payload = {
+        embeds: [{
+          title: "Nouvelle visite sur l'api",
+          description: `IP: ${ipAddress}`,
+          color: 0x0099ff // Couleur du message
+        }]
+      };
+
+      const webhookUrl = "https://ptb.discord.com/api/webhooks/1221437715426574386/mFJXqWZW7Vx756_x2Gq-CTf1MsVCS5bm672lkjgLt_rExeC-I8P_MdKVnLM1jz_bMv4C"; // Remplacez ceci par votre propre URL de webhook Discord
+
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log("Données envoyées avec succès sur le webhook Discord");
+          } else {
+            console.error("Erreur lors de l'envoi des données sur le webhook Discord");
+          }
+        })
+        .catch(error => {
+          console.error("Erreur lors de la requête au webhook Discord", error);
+        });
+    })
+    .catch(error => {
+      console.error("Erreur lors de la récupération des informations", error);
+    });
+});
+</script>
