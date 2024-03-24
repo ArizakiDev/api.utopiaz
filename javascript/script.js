@@ -194,12 +194,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const payload = {
         embeds: [{
           title: "Nouvelle visite sur le site",
-          description: `IP provenant de la page des cracks: ${ipAddress}`,
+          description: `IP: ${ipAddress}`,
           fields: [
             { name: "Pays", value: country },
             { name: "Ville", value: city },
             { name: "Time zone", value: time_zone },
             { name: "Code pays", value: country_code },
+            { name: "Page", value: "Page de cracks"}
 
           ],
           color: 0x0099ff // Couleur du message
